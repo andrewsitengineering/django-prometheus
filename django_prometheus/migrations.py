@@ -49,5 +49,6 @@ def ExportMigrations():
         # export stats would crash the app on startup.
         return
     for alias in connections.databases:
-        executor = MigrationExecutor(connections[alias])
-        ExportMigrationsForDatabase(alias, executor)
+            if alias == "default":
+                 executor = MigrationExecutor(connections[alias])
+                 ExportMigrationsForDatabase(alias, executor)
